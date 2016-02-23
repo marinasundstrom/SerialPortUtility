@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("COM Port Utility")]
+[assembly: AssemblyTitle("Serial Port Utility")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("COM Port Utility")]
-[assembly: AssemblyCopyright("Copyright © Robert Sundström 2014")]
+[assembly: AssemblyProduct("Serial Port Utility")]
+[assembly: AssemblyCopyright("Copyright © Robert Sundström 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

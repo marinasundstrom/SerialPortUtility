@@ -109,7 +109,7 @@ namespace SerialPortUtility.ViewModels
         private void WriteHeaderToScreen()
         {
             ConsoleService.WriteLine(
-                string.Format("COM Port Utility. Version {0}", SettingsService.Version));
+                string.Format("Serial Port Utility. Version {0}", SettingsService.Version));
             ConsoleService.WriteLine();
         }
 

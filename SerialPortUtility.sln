@@ -28,6 +28,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1880F796
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortUtility.Tests", "PortUtil.Tests\SerialPortUtility.Tests.csproj", "{8F898E50-C617-43AD-A582-FD405FE5CF88}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{C7D05BE7-0B8A-4F74-B8EE-2BD410633417}"
+	ProjectSection(SolutionItems) = preProject
+		Images\Terminal.png = Images\Terminal.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

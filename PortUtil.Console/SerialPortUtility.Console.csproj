@@ -7,7 +7,7 @@
     <ProjectGuid>{E2D9FCEE-0416-4848-BC4C-3A45A84E669A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PortUtil</RootNamespace>
+    <RootNamespace>SerialPortUtility</RootNamespace>
     <AssemblyName>SerialPortUtility</AssemblyName>
     <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
