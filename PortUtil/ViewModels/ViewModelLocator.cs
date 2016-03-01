@@ -1,7 +1,7 @@
-﻿using Microsoft.Practices.ServiceLocation;
+﻿using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Practices.ServiceLocation;
 using SerialPortUtility.Services;
 using SerialPortUtility.Services.Stubs;
-using Sundstrom.NuIoc;
 
 namespace SerialPortUtility.ViewModels
 {
@@ -9,7 +9,7 @@ namespace SerialPortUtility.ViewModels
     {
         public ViewModelLocator()
         {
-            var nuioc = new NuContainer();
+            var nuioc = new SimpleIoc();
 
             ServiceLocator.SetLocatorProvider(() => nuioc);
 
@@ -36,8 +36,9 @@ namespace SerialPortUtility.ViewModels
             // ViewModels
 
             nuioc.Register<IConsoleViewModel, ConsoleViewModel>();
-            nuioc.RegisterTransient<ISessionSetupViewModel, SessionSetupViewModel>();
-            nuioc.RegisterTransient<ISettingsViewModel, SettingsViewModel>();
+
+            nuioc.Register<ISessionSetupViewModel, SessionSetupViewModel>();
+            nuioc.Register<ISettingsViewModel, SettingsViewModel>();
         }
 
         public ISerialPortService SerialPortService

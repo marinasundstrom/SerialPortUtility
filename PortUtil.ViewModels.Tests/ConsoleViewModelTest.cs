@@ -3,8 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SerialPortUtility.Command;
 using SerialPortUtility.Services.Stubs;
-using SerialPortUtility.Services.Stubs;
-using Sundstrom.Mvvm.Command;
 
 namespace SerialPortUtility.ViewModels.Tests
 {
@@ -38,7 +36,7 @@ namespace SerialPortUtility.ViewModels.Tests
             Assert.IsTrue(consoleViewModel.IsSessionOpen);
 
             var endSessionCommand = consoleViewModel.EndSessionCommand;
-            endSessionCommand.Execute();
+            endSessionCommand.Execute(null);
 
             Assert.IsFalse(consoleViewModel.IsSessionOpen);
         }
@@ -71,7 +69,7 @@ namespace SerialPortUtility.ViewModels.Tests
             Assert.IsFalse(consoleViewModel.IsSessionOpen);
 
             var endSessionCommand = consoleViewModel.EndSessionCommand;
-            endSessionCommand.Execute();
+            endSessionCommand.Execute(null);
         }
     }
 }

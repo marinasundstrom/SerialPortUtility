@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using SerialPortUtility.Services;
-using SerialPortUtility.ViewModels.Annotations;
 
 namespace SerialPortUtility.Views
 {
@@ -42,7 +41,6 @@ namespace SerialPortUtility.Views
             OnPropertyChanged("IsNormal");
         }
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

@@ -40,10 +40,6 @@
       <Project>{242F0721-F930-4D5B-951E-1127E5536C3A}</Project>
       <Name>SerialPortUtility.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Sundstrom.Mvvm\Sundstrom.Mvvm.csproj">
-      <Project>{bf1d7085-60a2-41e4-9fc5-7cf9a52ca42c}</Project>
-      <Name>Sundstrom.Mvvm</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\AsyncRelayCommand.cs" />

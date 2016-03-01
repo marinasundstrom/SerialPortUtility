@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows.Input;
 using SerialPortUtility.Services;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace SerialPortUtility.ViewModels
 {

@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SerialPortUtility.Services;
 using SerialPortUtility.Services.Stubs;
-using Sundstrom.Mvvm.Command;
 
 namespace SerialPortUtility.ViewModels.Tests
 {
@@ -21,7 +20,7 @@ namespace SerialPortUtility.ViewModels.Tests
 
             sessionSetupViewModel.Initialize();
 
-            sessionSetupViewModel.MakeDefaultCommand.Execute();
+            sessionSetupViewModel.MakeDefaultCommand.Execute(null);
         }
 
         [TestMethod]
@@ -38,7 +37,7 @@ namespace SerialPortUtility.ViewModels.Tests
 
             sessionSetupViewModel.Initialize();
 
-            sessionSetupViewModel.StartCommand.Execute();
+            sessionSetupViewModel.StartCommand.Execute(null);
 
             Assert.IsFalse(dialogService.StubDialogShown);
             Assert.IsTrue(sessionSetupViewModel.IsValid);
@@ -56,7 +55,7 @@ namespace SerialPortUtility.ViewModels.Tests
 
             sessionSetupViewModel.Initialize();
 
-            sessionSetupViewModel.CancelCommand.Execute();
+            sessionSetupViewModel.CancelCommand.Execute(null);
         }
     }
 }

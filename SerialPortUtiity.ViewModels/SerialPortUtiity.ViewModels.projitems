@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>09e9f067-5beb-45dc-9fcf-bfacf6e8766a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>SerialPortUtiity.ViewModels</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Command\AsyncRelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\AsyncRelayCommandExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\DataAnnotationValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\ExpectInt32Attribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\NotEmptyAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ConsoleViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IConsoleViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ISession.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ISessionConfigViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ISettingsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Session.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SessionSetupViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SettingsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
+  </ItemGroup>
+</Project>

@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using SerialPortUtility.Services;
 using SerialPortUtility.ViewModels;
-using Sundstrom.Mvvm.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace SerialPortUtility.Views
 {

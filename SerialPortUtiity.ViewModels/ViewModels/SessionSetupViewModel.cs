@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Input;
 using SerialPortUtility.Services;
 using SerialPortUtility.Validation;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace SerialPortUtility.ViewModels
 {
