@@ -2,10 +2,8 @@
 {
     public interface IWindowService
     {
-        void Show(string name);
+        void Show(string name, bool closeCurrent = false);
 
-        bool ShowDialog(string name);
-
-        void CloseActive();
+        bool? ShowDialog(string name);
     }
 }

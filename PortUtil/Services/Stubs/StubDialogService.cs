@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace SerialPortUtility.Services.Stubs
@@ -25,6 +26,23 @@ namespace SerialPortUtility.Services.Stubs
             stream = null;
             StubDialogShown = true;
             return StubDialogResult;
+        }
+
+        public bool ShowOpenFileDialog(string title, string extension, out Stream stream)
+        {
+            stream = null;
+            StubDialogShown = true;
+            return StubDialogResult;
+        }
+
+        public async Task ShowWarningDialogAsync(string content, string title)
+        {
+            StubDialogShown = true;
+        }
+
+        public async Task ShowInfoDialogAsync(string content, string title)
+        {
+            StubDialogShown = true;
         }
     }
 }

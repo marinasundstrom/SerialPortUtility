@@ -6,20 +6,16 @@
 
         public static string StubWindow { get; set; }
 
-        public void Show(string name)
+        public void Show(string name, bool closeCurrent = false)
         {
             StubWindow = name;
         }
 
-        public bool ShowDialog(string name)
+        public bool? ShowDialog(string name)
         {
             StubWindow = name;
 
             return StubDialogResult;
-        }
-
-        public void CloseActive()
-        {
         }
     }
 }

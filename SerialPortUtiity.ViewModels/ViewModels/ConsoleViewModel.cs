@@ -308,7 +308,7 @@ namespace SerialPortUtility.ViewModels
                 }
             }
 
-            if (WindowService.ShowDialog("SessionSetupWindow"))
+            if (WindowService.ShowDialog("SessionSetupWindow").GetValueOrDefault())
             {
                 Session = new Session(ConsoleService, SerialPortService, SettingsService, DialogService);
 

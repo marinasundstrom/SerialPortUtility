@@ -6,34 +6,31 @@ namespace SerialPortUtility.Services
 {
     public class WindowService : IWindowService
     {
-        private string ViewNamespace = "SerialPortUtility.Views.";
+        private const string ViewNamespace = "SerialPortUtility.Views.";
 
-        private static Window ActiveWindow
+        public void Show(string name, bool closeCurrent = false)
         {
-            get { return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive); }
+            var previouslyActiveWindow = Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.IsActive);
+
+            var type = Type.GetType($"{ViewNamespace}{name}");
+            var instance = (Window)Activator.CreateInstance(type);
+
+            if (previouslyActiveWindow != null && closeCurrent)
+            {
+                instance.Loaded += (s, e) =>
+                {
+                    previouslyActiveWindow.Close();
+                };
+            }
+
+            instance.Show();
         }
 
-        public void Show(string name)
+        public bool? ShowDialog(string name)
         {
-            name = ViewNamespace + name;
-            Type type = Type.GetType(name);
-            var window = (Window) Activator.CreateInstance(type, null);
-            window.Owner = ActiveWindow;
-            window.Show();
-        }
-
-        public bool ShowDialog(string name)
-        {
-            name = ViewNamespace + name;
-            Type type = Type.GetType(name);
-            var window = (Window) Activator.CreateInstance(type, null);
-            window.Owner = ActiveWindow;
-            return (bool) window.ShowDialog();
-        }
-
-        public void CloseActive()
-        {
-            ActiveWindow.Close();
+            var type = Type.GetType($"{ViewNamespace}{name}");
+            var instance = (Window)Activator.CreateInstance(type);
+            return instance.ShowDialog();
         }
     }
 }
