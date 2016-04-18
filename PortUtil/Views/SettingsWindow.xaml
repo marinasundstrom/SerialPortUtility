@@ -76,7 +76,10 @@
                     <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
                               Width="150" Height="22" Grid.Row="4" ItemsSource="{Binding FontFamilyList}"
                               SelectedItem="{Binding FontFamily, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              ItemTemplate="{StaticResource FontComboBoxItemTemplate}" />
+                              ItemTemplate="{StaticResource FontComboBoxItemTemplate}"
+                              VerticalContentAlignment="Center" >
+     
+                    </ComboBox>
                     <Label Content="Font" HorizontalAlignment="Right" Margin="0,8,0,0" VerticalAlignment="Top"
                            HorizontalContentAlignment="Right" Height="26"
                            Width="103" Grid.Row="4" />
