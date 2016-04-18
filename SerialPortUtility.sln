@@ -28,6 +28,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{C7D05B
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SerialPortUtiity.ViewModels", "SerialPortUtiity.ViewModels\SerialPortUtiity.ViewModels.shproj", "{09E9F067-5BEB-45DC-9FCF-BFACF6E8766A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28A825F9-2C96-448C-8582-1ECFF3AAEA3A}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SerialPortUtiity.ViewModels\SerialPortUtiity.ViewModels.projitems*{9d4ae7b6-f40e-4ed3-b81f-fc4d8b2009d7}*SharedItemsImports = 4
