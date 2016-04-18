@@ -16,15 +16,13 @@ The application is as of yet still an unfinished work in progress. Please post a
 
 Check the develop branch for the latest version.
 
-## Build the project
-
-To build this project.
+## Build the solution
 
 1. Clone (or download) the repository:
 
-```sh
-git@github.com:robertsundstrom/SerialPortUtility.git
-```
+	```sh
+	git@github.com:robertsundstrom/SerialPortUtility.git
+	```
 
 2. Open the solution in Visual Studio 2015 (or later).
 3. Rebuild the solution. Will restore NuGet packages automatically.
