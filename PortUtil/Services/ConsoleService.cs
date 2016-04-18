@@ -31,38 +31,43 @@ namespace SerialPortUtility.Services
         public Task<char> ReadCharAsync()
         {
             var source = new TaskCompletionSource<char>();
-            EventHandler<CharBufferEventArgs> a = null;
-            a = (sender, args) =>
+            if (ReadBuffer.Length > 0)
             {
-                if (!LocationTracker.HasInputStarted)
-                    LocationTracker.StartInput();
-
-                try
+                char value = ReadBuffer.Dequeue();
+                source.SetResult(value);
+            }
+            else
+            {
+                EventHandler<CharBufferEventArgs> a = null;
+                a = (sender, args) =>
                 {
-                    if (source.Task.Status == TaskStatus.RanToCompletion
-                        || source.Task.Status == TaskStatus.Canceled)
+                    if (!LocationTracker.HasInputStarted)
+                        LocationTracker.StartInput();
+
+                    try
                     {
+                        if (source.Task.Status == TaskStatus.RanToCompletion
+                            || source.Task.Status == TaskStatus.Canceled)
+                        {
+                            ReadBuffer.CharAdded -= a;
+                            return;
+                        }
+
+                        char value = ReadBuffer.Dequeue();
+
+                        LocationTracker.EndInput();
+
                         ReadBuffer.CharAdded -= a;
-                        return;
+
+                        source.SetResult(value);
                     }
-
-                    string value = ReadBuffer.ToString();
-
-                    ReadBuffer.Clear();
-
-                    LocationTracker.EndInput();
-
-                    ReadBuffer.CharAdded -= a;
-
-                    source.SetResult(
-                        value[0]);
-                }
-                catch (Exception e)
-                {
-                    source.SetException(e);
-                }
-            };
-            ReadBuffer.CharAdded += a;
+                    catch (Exception e)
+                    {
+                        source.SetException(e);
+                    }
+                };
+                ReadBuffer.CharAdded += a;
+            }
             return source.Task;
         }
 
@@ -196,10 +201,10 @@ namespace SerialPortUtility.Services
                 action();
         }
 
-        public void InsertText(int index, string text)
+        public async Task InsertText(int index, string text)
         {
-            if (text.Contains("\n") || text.Contains("\r"))
-                throw new ArgumentException("Contains forbidden characters.", "text");
+            //if (text.Contains("\n") || text.Contains("\r"))
+            //    throw new ArgumentException("Contains forbidden characters.", "text");
 
             if (PrintInput)
             {
@@ -225,7 +230,9 @@ namespace SerialPortUtility.Services
             {
                 for (int i = 0; i < text.Length; i++)
                 {
-                    ReadBuffer.Add(text[i]);
+                    ReadBuffer.Enqueue(text[i]);
+
+                    //await Task.Delay(5);
                 }
             }
 
@@ -270,7 +277,7 @@ namespace SerialPortUtility.Services
 
         public string GetText()
         {
-            return TextBox.Text;
+            return TextBox.Text.Replace("\r", Environment.NewLine);
         }
 
         public void SelectAll()
@@ -310,10 +317,8 @@ namespace SerialPortUtility.Services
         {
             if (appendNewLine)
             {
-                TextBox.AppendText("\r");
+                ReadBuffer.Add(NewLine);
             }
-
-            ReadBuffer.Add('\n');
 
             Focus();
         }

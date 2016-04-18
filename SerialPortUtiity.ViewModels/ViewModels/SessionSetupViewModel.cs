@@ -7,6 +7,7 @@ using System.Windows.Input;
 using SerialPortUtility.Services;
 using SerialPortUtility.Validation;
 using GalaSoft.MvvmLight.CommandWpf;
+using System.Text.RegularExpressions;
 
 namespace SerialPortUtility.ViewModels
 {
@@ -34,7 +35,7 @@ namespace SerialPortUtility.ViewModels
         private IEnumerable<string> _serialPorts;
         private StopBits _stopBits;
         private IEnumerable<StopBits> _stopBitsItems;
-
+        private string _newLine;
 
         public SessionSetupViewModel(
             IConsoleService consoleService,
@@ -128,6 +129,8 @@ namespace SerialPortUtility.ViewModels
             PrintInputToScreen = SettingsService.PrintInput;
 
             PushDelay = SettingsService.PushDelay;
+
+            NewLine = Regex.Escape(SettingsService.NewLine);
         }
 
         [NotEmpty]
@@ -339,6 +342,16 @@ namespace SerialPortUtility.ViewModels
             }
         }
 
+        public string NewLine
+        {
+            get { return _newLine; }
+            set
+            {
+                _newLine = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public bool PrintInputToScreen
         {
             get { return _printInputToScreen; }
@@ -387,6 +400,8 @@ namespace SerialPortUtility.ViewModels
                 ConsoleOutput.OutputFormat = OutputFormat;
 
                 ConsoleService.PrintInput = PrintInputToScreen;
+
+                ConsoleService.NewLine = Regex.Unescape(NewLine);
             }
             else
             {
@@ -409,6 +424,7 @@ namespace SerialPortUtility.ViewModels
             SettingsService.OutputFormat = OutputFormat;
             SettingsService.PrintInput = PrintInputToScreen;
             SettingsService.PushDelay = PushDelay;
+            SettingsService.NewLine = Regex.Unescape(NewLine);
 
             SettingsService.Save();
         }

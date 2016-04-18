@@ -28,6 +28,8 @@
 
         Format OutputFormat { get; set; }
 
+        string NewLine { get; set; }
+
         bool PrintInput { get; set; }
 
         int PushDelay { get; set; }

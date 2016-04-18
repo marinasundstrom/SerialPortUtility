@@ -147,23 +147,33 @@ namespace SerialPortUtility.ViewModels
                 if (ConsoleService.IsEnabled)
                 {
                     string text = ClipboardService.GetText();
-                    var lines = text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
-                    foreach (var line in lines)
+                    var lines = text.Split(new[] { SettingsService.NewLine }, StringSplitOptions.None);
+                    if (lines.Length > 1)
                     {
-                        if (!Session.IsRunning)
+                        foreach (var line in lines)
                         {
-                            // The session has ended break the loop.
-                            break;
+                            if (!Session.IsRunning)
+                            {
+                                // The session has ended break the loop.
+                                break;
+                            }
+
+                            int index = ConsoleService.SelectionStart;
+                            await ConsoleService.InsertText(index, line + SettingsService.NewLine);
+
+                            ConsoleService.Send(
+                                false);
+
+                            if (SettingsService.PushDelay > 0)
+                            {
+                                await TaskHelpers.Delay(SettingsService.PushDelay);
+                            }
                         }
-
-                        int index = ConsoleService.SelectionStart;
-                        ConsoleService.InsertText(index, line);
-
-                        ConsoleService.Send(
-                            false);
-
-                        await TaskHelpers.Delay(SettingsService.PushDelay);
-                    }              
+                    }
+                    else
+                    {
+                        ConsoleService.Write(text);
+                    }
                 }
             }
             catch (ArgumentException e)
@@ -193,8 +203,7 @@ namespace SerialPortUtility.ViewModels
                     using (var streamWriter = new StreamWriter(stream))
                     {
                         streamWriter.AutoFlush = true;
-                        string text = ConsoleService.GetText()
-                            .Replace("\r", "\r\n");
+                        string text = ConsoleService.GetText();
                         streamWriter.Write(text);
                     }
                 }

@@ -33,7 +33,7 @@ namespace SerialPortUtility.Services
         void WriteLine();
         void Write(string format, params object[] args);
 
-        void InsertText(int index, string text);
+        Task InsertText(int index, string text);
 
         void Clear();
 

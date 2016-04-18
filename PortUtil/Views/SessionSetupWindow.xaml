@@ -192,6 +192,8 @@
                            Grid.Row="6" />
                     <Label Content="milliseconds" Grid.Column="1" HorizontalAlignment="Left" Margin="135,8,0,0"
                            Grid.Row="6" VerticalAlignment="Top" />
+                    <Label x:Name="label" Content="New Line" HorizontalAlignment="Right" Margin="0,37,0,0" Grid.Row="7" VerticalAlignment="Top" Width="89" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="textBox" Text="{Binding NewLine , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,40,0,0" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Top" Width="57"/>
                 </Grid>
             </TabItem>
         </TabControl>

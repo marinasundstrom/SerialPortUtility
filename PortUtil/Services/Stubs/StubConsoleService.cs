@@ -44,7 +44,7 @@ namespace SerialPortUtility.Services.Stubs
         {
         }
 
-        public void InsertText(int index, string text)
+        public async Task InsertText(int index, string text)
         {
         }
 

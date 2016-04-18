@@ -34,6 +34,8 @@ namespace SerialPortUtility.ViewModels
         Format InputFormat { get; set; }
         IEnumerable<Format> IntputFormatList { get; set; }
 
+        string NewLine { get; set; }
+
         bool PrintInputToScreen { get; set; }
         ICommand MakeDefaultCommand { get; }
         void Initialize();

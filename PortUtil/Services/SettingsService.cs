@@ -226,6 +226,22 @@ namespace SerialPortUtility.Services
             set { Settings.AddOrUpdate("outputFormat", value.ToString()); }
         }
 
+        public string NewLine
+        {
+            get
+            {
+                string value;
+
+                if (Settings.TryGetKey("newLine", out value))
+                {
+                    return value;
+                }
+
+                return Environment.NewLine;
+            }
+            set { Settings.AddOrUpdate("newLine", value); }
+        }
+
         public bool PrintInput
         {
             get

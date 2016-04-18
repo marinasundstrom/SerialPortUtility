@@ -17,30 +17,30 @@ namespace SerialPortUtility.Services
             get { return _buffer[i]; }
         }
 
-        public void Add(char value)
+        public void Add(char value, bool raise = true)
         {
             _buffer.Add(value);
 
-            if (CharAdded != null)
+            if (raise && CharAdded != null)
                 CharAdded(this, new CharBufferEventArgs(value));
         }
 
-        public void Add(string value) 
+        public void Add(string value, bool raise = true) 
         {
             _buffer.AddRange(value);
 
             foreach (var ch in value)
             {
-                if (CharAdded != null)
+                if (raise && CharAdded != null)
                     CharAdded(this, new CharBufferEventArgs(ch));
             }
         }
 
-        public void Insert(int index, char value)
+        public void Insert(int index, char value, bool raise = true)
         {
             _buffer.Insert(index, value);
 
-            if (CharAdded != null)
+            if (raise && CharAdded != null)
                 CharAdded(this, new CharBufferEventArgs(value));
         }
 
@@ -52,6 +52,27 @@ namespace SerialPortUtility.Services
         public void Clear()
         {
             _buffer.Clear();
+        }
+
+        public char Dequeue()
+        {
+            var ch = _buffer[0];
+            _buffer.RemoveAt(0);
+            return ch;
+        }
+
+        public void Enqueue(char value, bool raise = true)
+        {
+            Add(value, raise);
+        }
+
+        public void RaiseForAll()
+        {
+            var buffer = this._buffer.ToArray();
+            foreach(var ch in buffer)
+            {
+                CharAdded(this, new CharBufferEventArgs(ch));
+            }
         }
 
         public override string ToString()
