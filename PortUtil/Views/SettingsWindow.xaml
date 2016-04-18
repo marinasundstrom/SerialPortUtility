@@ -13,6 +13,19 @@
                   WindowStartupLocation="CenterOwner" Closing="WindowBase_Closing">
     <views:WindowBase.Resources>
 
+        <DataTemplate x:Key="ColorComboBoxItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Fill="{Binding}" Height="12" Width="12" Margin="0,0,6,0"></Rectangle>
+                <TextBlock Text="{Binding}"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FontComboBoxItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding}" FontFamily="{Binding}"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
     </views:WindowBase.Resources>
     <views:WindowBase.DataContext>
         <Binding Mode="OneWay" Path="SettingsViewModel" Source="{StaticResource Locator}" />
@@ -48,19 +61,22 @@
                     </Grid.ColumnDefinitions>
                     <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
                               Width="120" Height="22" Grid.Row="1" ItemsSource="{Binding ColorList}"
-                              SelectedItem="{Binding ForegroundColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                              SelectedItem="{Binding ForegroundColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              ItemTemplate="{StaticResource ColorComboBoxItemTemplate}" />
                     <Label Content="Foreground" HorizontalAlignment="Right" Margin="0,8,0,0" VerticalAlignment="Top"
                            RenderTransformOrigin="0.553,0.192" HorizontalContentAlignment="Right" Height="26"
                            Width="103" Grid.Row="1" />
                     <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
                               Width="120" Height="22" Grid.Row="2" ItemsSource="{Binding ColorList}"
-                              SelectedItem="{Binding BackgroundColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                              SelectedItem="{Binding BackgroundColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              ItemTemplate="{StaticResource ColorComboBoxItemTemplate}" />
                     <Label Content="Background" HorizontalAlignment="Right" Margin="0,8,0,0" VerticalAlignment="Top"
                            HorizontalContentAlignment="Right" Height="26"
                            Width="103" Grid.Row="2" />
                     <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
                               Width="150" Height="22" Grid.Row="4" ItemsSource="{Binding FontFamilyList}"
-                              SelectedItem="{Binding FontFamily, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                              SelectedItem="{Binding FontFamily, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              ItemTemplate="{StaticResource FontComboBoxItemTemplate}" />
                     <Label Content="Font" HorizontalAlignment="Right" Margin="0,8,0,0" VerticalAlignment="Top"
                            HorizontalContentAlignment="Right" Height="26"
                            Width="103" Grid.Row="4" />

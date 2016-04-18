@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Media;
 
 namespace SerialPortUtility.Services
 {
     public class ConsoleFormatService : IConsoleFormatService
     {
-        private readonly string[] array =
-        {
-            "Consolas",
-            "Lucida Console"
-        };
-
         public IEnumerable<string> GetFontFamilies()
         {
-            return array.AsEnumerable();
+            return Fonts.SystemFontFamilies.Select(x => x.ToString());
         }
 
         public IEnumerable<string> GetColors()
