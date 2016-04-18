@@ -149,8 +149,6 @@ namespace SerialPortUtility.ViewModels
 
         private async void InputThread()
         {
-            bool flag = false;
-            string message = string.Empty;
             try
             {
                 while (true)
@@ -161,12 +159,7 @@ namespace SerialPortUtility.ViewModels
             }
             catch (Exception e)
             {
-                flag = true;
-                message = e.Message;
-            }
-            if (flag)
-            {
-                await DialogService.ShowErrorDialogAsync(message, "Exception");
+                await DialogService.ShowErrorDialogAsync(e.Message, "Exception");
             }
         }
 

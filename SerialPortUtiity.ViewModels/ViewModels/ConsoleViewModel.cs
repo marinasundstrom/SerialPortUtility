@@ -205,7 +205,6 @@ namespace SerialPortUtility.ViewModels
 
         private async Task SaveCommandImpl()
         {
-            bool flag = false;
             Stream stream = null;
             if (DialogService.ShowSaveFileDialog("", "Text files (*.txt)|*.txt|All files (*.*)|*.*", out stream))
             {
@@ -219,10 +218,6 @@ namespace SerialPortUtility.ViewModels
                     }
                 }
                 catch (Exception)
-                {
-                    flag = true;
-                }
-                if (flag)
                 {
                     await DialogService.ShowErrorDialogAsync("Failed to save to file.", "Error");
                 }
@@ -263,8 +258,6 @@ namespace SerialPortUtility.ViewModels
         {
             if (ConsoleService.IsEnabled)
             {
-                bool flag = false;
-                string message = null;
                 try
                 {
                     var str = ConsoleService.CutSelectedInput();
@@ -272,12 +265,7 @@ namespace SerialPortUtility.ViewModels
                 }
                 catch (InvalidOperationException e)
                 {
-                    flag = true;
-                    message = e.Message;
-                }
-                if (flag)
-                {
-                    await DialogService.ShowErrorDialogAsync(message, "Exception");
+                    await DialogService.ShowErrorDialogAsync(e.Message, "Exception");
                 }
             }
         }
@@ -286,24 +274,17 @@ namespace SerialPortUtility.ViewModels
         {
             if (ConsoleService.IsEnabled)
             {
-                bool flag = false;
-                string message = null;
                 try
                 {
 
                     string text = ClipboardService.GetText();
                     int index = ConsoleService.SelectionStart;
-                    ConsoleService.InsertText(index, text);
+                    await ConsoleService.InsertText(index, text);
 
                 }
                 catch (ArgumentException e)
                 {
-                    flag = true;
-                    message = e.Message;
-                }
-                if (flag)
-                {
-                    await DialogService.ShowErrorDialogAsync(message, "Exception");
+                    await DialogService.ShowErrorDialogAsync(e.Message, "Exception");
                 }
             }
         }

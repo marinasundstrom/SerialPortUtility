@@ -60,7 +60,6 @@ namespace SerialPortUtility.ViewModels
         }
 
         public IDialogService DialogService { get; private set; }
-
         public IConsoleFormatService ConsoleFormatService { get; private set; }
         public ISerialPortService SerialPortService { get; private set; }
         public ISettingsService SettingsService { get; private set; }
@@ -404,9 +403,7 @@ namespace SerialPortUtility.ViewModels
 
                 ConsoleService.NewLine = Regex.Unescape(NewLine);
 
-                // Special case: These are used internally,
-
-                SettingsService.LinePushDelay = LinePushDelay;
+                SetSettings();
             }
             else
             {
@@ -415,6 +412,13 @@ namespace SerialPortUtility.ViewModels
         }
 
         private void MakeDefaultCommandImpl()
+        {
+            SetSettings();
+
+            SettingsService.Save();
+        }
+
+        private void SetSettings()
         {
             SettingsService.PortName = SerialPort;
             SettingsService.BaudRate = BaudRate;
@@ -430,8 +434,6 @@ namespace SerialPortUtility.ViewModels
             SettingsService.PrintInput = PrintInputToScreen;
             SettingsService.LinePushDelay = LinePushDelay;
             SettingsService.NewLine = Regex.Unescape(NewLine);
-
-            SettingsService.Save();
         }
     }
 }
