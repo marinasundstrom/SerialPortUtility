@@ -153,6 +153,8 @@ namespace SerialPortUtility.ViewModels
 
                     int index = ConsoleService.SelectionStart;
                     await ConsoleService.InsertText(index, text);
+
+                    SerialPortService.Write(text);
                 }
             }
             catch (ArgumentException e)
@@ -163,7 +165,6 @@ namespace SerialPortUtility.ViewModels
 
         private async Task PasteAndSendLinesCommandImpl()
         {
-
             try
             {
                 if (ConsoleService.IsEnabled)
@@ -183,6 +184,8 @@ namespace SerialPortUtility.ViewModels
 
                             int index = ConsoleService.SelectionStart;
                             await ConsoleService.InsertText(index, line);
+
+                            SerialPortService.Write(line);
 
                             if (SettingsService.LinePushDelay > 0)
                             {

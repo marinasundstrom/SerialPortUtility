@@ -218,23 +218,23 @@ namespace SerialPortUtility.Services
                 }
             }
 
-            int lineIndex = LocationTracker.GetCharLineIndexFromCharStringIndex(index);
-            if (LocationTracker.IsWithinInputArea(lineIndex))
-            {
-                for (int i = 0; i < text.Length; i++)
-                {
-                    ReadBuffer.Insert(lineIndex + i, text[i]);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < text.Length; i++)
-                {
-                    ReadBuffer.Enqueue(text[i]);
+            //int lineIndex = LocationTracker.GetCharLineIndexFromCharStringIndex(index);
+            //if (LocationTracker.IsWithinInputArea(lineIndex))
+            //{
+            //    for (int i = 0; i < text.Length; i++)
+            //    {
+            //        ReadBuffer.Insert(lineIndex + i, text[i]);
+            //    }
+            //}
+            //else
+            //{
+            //    for (int i = 0; i < text.Length; i++)
+            //    {
+            //        ReadBuffer.Enqueue(text[i]);
 
-                    //await Task.Delay(5);
-                }
-            }
+            //        //await Task.Delay(5);
+            //    }
+            //}
 
             LocationTracker.Increase(text.Length);
 
