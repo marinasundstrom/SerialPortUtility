@@ -25,6 +25,17 @@ namespace SerialPortUtility.Services
                 CharAdded(this, new CharBufferEventArgs(value));
         }
 
+        public void Add(string value) 
+        {
+            _buffer.AddRange(value);
+
+            foreach (var ch in value)
+            {
+                if (CharAdded != null)
+                    CharAdded(this, new CharBufferEventArgs(ch));
+            }
+        }
+
         public void Insert(int index, char value)
         {
             _buffer.Insert(index, value);

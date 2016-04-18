@@ -29,6 +29,8 @@ namespace SerialPortUtility.Services
 
         void Write(string value);
 
+        void Write(char ch);
+
         void Write(byte[] buffer, int offset, int count);
 
         void Read(byte[] buffer, int offset, int count);

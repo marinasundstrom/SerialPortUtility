@@ -15,14 +15,16 @@ namespace SerialPortUtility.ViewModels
 
             // Services
 
-
             nuioc.Register<IConsoleService, ConsoleService>();
 
-#if DEBUG
-            nuioc.Register<ISerialPortService>(() => new StubSerialPortService());
-#else
-            nuioc.Register<ISerialPortService>(() => new SerialPortService());
-#endif
+            if (ViewModelBase.IsInDesignModeStatic)
+            {
+                nuioc.Register<ISerialPortService>(() => new StubSerialPortService());
+            }
+            else
+            {
+                nuioc.Register<ISerialPortService>(() => new SerialPortService());
+            }
 
             nuioc.Register<ISettingsService, SettingsService>();
             nuioc.Register<IClipboardService, ClipboardService>();

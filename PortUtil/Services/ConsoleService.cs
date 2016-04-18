@@ -140,6 +140,11 @@ namespace SerialPortUtility.Services
                 action();
         }
 
+        public void Write(char ch)
+        {
+            Write(ch.ToString());
+        }
+
         public void WriteLine(string value)
         {
             Action action = () =>
@@ -194,7 +199,7 @@ namespace SerialPortUtility.Services
         public void InsertText(int index, string text)
         {
             if (text.Contains("\n") || text.Contains("\r"))
-                throw new ArgumentException("The text contains forbidden characters.");
+                throw new ArgumentException("Contains forbidden characters.", "text");
 
             if (PrintInput)
             {
@@ -419,6 +424,18 @@ namespace SerialPortUtility.Services
 
         private void ConsoleService_KeyPressed(object sender, KeyInputEventArgs e)
         {
+            char ch = e.Char;
+
+            HandleKeyPressed(ch);
+
+            if (ch == '\r')
+            {
+                HandleKeyPressed('\n');
+            }
+        }
+
+        private void HandleKeyPressed(char ch)
+        {
             int selectedStartIndex = TextBox.SelectionStart;
 
             if (TextBox.SelectionLength > 0)
@@ -427,8 +444,6 @@ namespace SerialPortUtility.Services
             if (PrintInput
                 && LocationTracker.IsOutsideInputArea(selectedStartIndex))
                 return;
-
-            char ch = e.Char;
 
             if (PrintInput)
             {
@@ -446,11 +461,20 @@ namespace SerialPortUtility.Services
             switch (ch)
             {
                 case '\r':
-                    LocationTracker.NewLine();
+                    ReadBuffer.Add('\r');
+                    if (ReadBuffer.ToString() == NewLine)
+                    {
+                        LocationTracker.NewLine();
+                    }
+                   
+                    break;
 
+                case '\n':
                     ReadBuffer.Add('\n');
-
-                    Focus();
+                    if(ReadBuffer.ToString() == NewLine)
+                    {
+                        LocationTracker.NewLine();
+                    }
                     break;
 
                 default:

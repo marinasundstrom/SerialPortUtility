@@ -13,6 +13,7 @@ namespace SerialPortUtility.ViewModels
     {
         private bool _isSessionOpen;
         private ISession _session;
+        private string _title;
 
         public ConsoleViewModel(
             IConsoleService consoleService,
@@ -52,6 +53,8 @@ namespace SerialPortUtility.ViewModels
             SelectAllCommand = new RelayCommand(SelectAllCommandImpl);
             QuitCommand = new RelayCommand(QuitCommandImpl);
             SettingsCommand = new RelayCommand(SettingsCommandImpl);
+
+            Title = "Serial Port Utility";
         }
 
         public ITaskHelpers TaskHelpers { get; private set; }
@@ -78,6 +81,16 @@ namespace SerialPortUtility.ViewModels
             ApplyConsoleSettings();
 
             ConsoleService.IsEnabled = false;
+        }
+
+        public string Title
+        {
+            get { return _title; }
+            private set
+            {
+                _title = value;
+                RaisePropertyChanged();
+            }
         }
 
         public bool IsSessionOpen
@@ -212,6 +225,8 @@ namespace SerialPortUtility.ViewModels
 
                 Session.Started -= ConsoleViewModel_SessionStarted;
                 Session.Ended -= OnSessionEnded;
+
+                Title = "Serial Port Utility";
             }
             else
             {
@@ -287,7 +302,6 @@ namespace SerialPortUtility.ViewModels
             ConsoleService.Clear();
         }
 
-
         public async Task NewSessionCommandImpl()
         {
             if (Session != null)
@@ -318,6 +332,8 @@ namespace SerialPortUtility.ViewModels
                 Session.StartSessionCommand.Execute(null);
 
                 IsSessionOpen = true;
+
+                Title = $"{SerialPortService.SerialPort} - Serial Port Utility";
             }
         }
 

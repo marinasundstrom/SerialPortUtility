@@ -4,7 +4,7 @@
     xmlns:Converters="clr-namespace:SerialPortUtility.Converters"
     xmlns:views="clr-namespace:SerialPortUtility.Views"
     x:Class="SerialPortUtility.Views.MainWindow" WindowStartupLocation="CenterScreen"
-    Title="Serial Port Utility" Height="382.5" Width="603.5" Closing="WindowBase_Closing" Icon="/SerialPortUtility;component/Assets/cmd.ico">
+    Title="{Binding Title}" Height="382.5" Width="603.5" Closing="WindowBase_Closing" Icon="/SerialPortUtility;component/Assets/cmd.ico">
 
 
     <Window.Resources>

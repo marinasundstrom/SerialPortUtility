@@ -29,6 +29,16 @@ namespace SerialPortUtility.Services.Stubs
             }
         }
 
+        public void Write(char value)
+        {
+            if (DataReceived != null)
+            {
+                byte[] bytes = Encoding.Default.GetBytes("Test");
+                BytesToRead = bytes.Length;
+                DataReceived(this, new EventArgs());
+            }
+        }
+
         public async void Write(byte[] buffer, int offset, int count)
         {
             if (DataReceived != null)

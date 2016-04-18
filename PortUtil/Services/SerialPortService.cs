@@ -99,19 +99,14 @@ namespace SerialPortUtility.Services
             }
         }
 
-        //public string SerialPort
-        //{
-        //    get { return _portName; }
-        //    set
-        //    {
-        //        _portName = value;
-        //    }
-        //}
-
-
         public void Write(string value)
         {
             _serialPort.Write(value);
+        }
+
+        public void Write(char value)
+        {
+            _serialPort.Write(value.ToString());
         }
 
         public void Write(byte[] buffer, int offset, int count)

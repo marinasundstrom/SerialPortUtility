@@ -15,7 +15,7 @@ namespace SerialPortUtility.ViewModels
     public class Session : ObservableObject, ISession
     {
         private bool _isRunning;
-        private Task _taskThread;
+        private Task _inputThreadTask;
         private CancellationToken _ct;
         private CancellationTokenSource _cts;
 
@@ -144,10 +144,10 @@ namespace SerialPortUtility.ViewModels
         {
             _cts = new CancellationTokenSource();
             _ct = _cts.Token;
-            _taskThread = Task.Factory.StartNew(Thread, _ct);
+            _inputThreadTask = Task.Factory.StartNew(InputThread, _ct);
         }
 
-        private async void Thread()
+        private async void InputThread()
         {
             bool flag = false;
             string message = string.Empty;
@@ -155,22 +155,8 @@ namespace SerialPortUtility.ViewModels
             {
                 while (true)
                 {
-                    string line = await ConsoleService.ReadLineAsync();
-                    if (!string.IsNullOrEmpty(line))
-                    {
-                        if (line == Environment.NewLine)
-                            break;
-
-                        if (line.Trim(' ') == "cls")
-                        {
-                            ConsoleService.Clear();
-                            continue;
-                        }
-
-                        byte[] bytes = ProcessLine(line);
-
-                        SerialPortService.Write(bytes, 0, bytes.Length);
-                    }
+                    char ch = await ConsoleService.ReadCharAsync();
+                    SerialPortService.Write(ch);
                 }
             }
             catch (Exception e)
@@ -184,9 +170,12 @@ namespace SerialPortUtility.ViewModels
             }
         }
 
-        private byte[] ProcessLine(string line)
+        private byte[] ProcessLine(string line, bool trimEnd = false)
         {
-            line = line.TrimEnd('\n');
+            if (trimEnd)
+            {
+                line = line.TrimEnd('\n');
+            }
 
             switch (ConsoleOutput.InputFormat)
             {
