@@ -128,7 +128,7 @@ namespace SerialPortUtility.ViewModels
 
             PrintInputToScreen = SettingsService.PrintInput;
 
-            PushDelay = SettingsService.LinePushDelay;
+            LinePushDelay = SettingsService.LinePushDelay;
 
             NewLine = Regex.Escape(SettingsService.NewLine);
         }
@@ -365,7 +365,7 @@ namespace SerialPortUtility.ViewModels
 
         [ExpectInt32]
         [Range(0, int.MaxValue, ErrorMessage = "Value is out of range.")]
-        public int PushDelay
+        public int LinePushDelay
         {
             get { return _pushDelay; }
             set
@@ -403,6 +403,10 @@ namespace SerialPortUtility.ViewModels
                 ConsoleService.PrintInput = PrintInputToScreen;
 
                 ConsoleService.NewLine = Regex.Unescape(NewLine);
+
+                // Special case: These are used internally,
+
+                SettingsService.LinePushDelay = LinePushDelay;
             }
             else
             {
@@ -424,7 +428,7 @@ namespace SerialPortUtility.ViewModels
             SettingsService.InputFormat = InputFormat;
             SettingsService.OutputFormat = OutputFormat;
             SettingsService.PrintInput = PrintInputToScreen;
-            SettingsService.LinePushDelay = PushDelay;
+            SettingsService.LinePushDelay = LinePushDelay;
             SettingsService.NewLine = Regex.Unescape(NewLine);
 
             SettingsService.Save();

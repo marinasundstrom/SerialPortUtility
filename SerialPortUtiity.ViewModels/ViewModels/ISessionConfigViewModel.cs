@@ -23,7 +23,7 @@ namespace SerialPortUtility.ViewModels
         IEnumerable<string> Encodings { get; set; }
         bool DtrEnabled { get; set; }
         bool RtsEnabled { get; set; }
-        int PushDelay { get; set; }
+        int LinePushDelay { get; set; }
 
         ICommand StartCommand { get; }
         ICommand CancelCommand { get; }

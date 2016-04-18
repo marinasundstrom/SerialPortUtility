@@ -145,8 +145,6 @@ namespace SerialPortUtility.ViewModels
 
         private async Task PasteAndSendCommandImpl()
         {
-            bool flag = false;
-            string message = "";
             try
             {
                 if (ConsoleService.IsEnabled)
@@ -159,19 +157,13 @@ namespace SerialPortUtility.ViewModels
             }
             catch (ArgumentException e)
             {
-                flag = true;
-                message = e.Message;
-            }
-            if (flag)
-            {
-                await DialogService.ShowErrorDialogAsync(message, "Exception");
+                await DialogService.ShowErrorDialogAsync(e.Message, "Exception");
             }
         }
 
         private async Task PasteAndSendLinesCommandImpl()
         {
-            bool flag = false;
-            string message = "";
+
             try
             {
                 if (ConsoleService.IsEnabled)
@@ -202,12 +194,7 @@ namespace SerialPortUtility.ViewModels
             }
             catch (ArgumentException e)
             {
-                flag = true;
-                message = e.Message;
-            }
-            if (flag)
-            {
-                await DialogService.ShowErrorDialogAsync(message, "Exception");
+                await DialogService.ShowErrorDialogAsync(e.Message, "Exception");
             }
         }
 

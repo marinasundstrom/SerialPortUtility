@@ -172,7 +172,7 @@
                                       VerticalAlignment="Top"
                                       Width="120" Height="22" Grid.Row="6">
                         <ComboBox
-                            Text="{Binding PushDelay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+                            Text="{Binding LinePushDelay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
                             IsEditable="True">
 
                             <i:Interaction.Behaviors>
