@@ -254,7 +254,7 @@ namespace SerialPortUtility.Services
             set { Settings.AddOrUpdate("printInput", value.ToString()); }
         }
 
-        public int PushDelay
+        public int LinePushDelay
         {
             get
             {

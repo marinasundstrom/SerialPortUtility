@@ -187,7 +187,7 @@
                             <system:Int32>2000</system:Int32>
                         </ComboBox>
                     </AdornerDecorator>
-                    <Label Content="Push delay" HorizontalAlignment="Right" Margin="0,8,0,0" VerticalAlignment="Top"
+                    <Label Content="Line push delay" HorizontalAlignment="Right" Margin="0,8,0,0" VerticalAlignment="Top"
                            HorizontalContentAlignment="Right" Width="103"
                            Grid.Row="6" />
                     <Label Content="milliseconds" Grid.Column="1" HorizontalAlignment="Left" Margin="135,8,0,0"

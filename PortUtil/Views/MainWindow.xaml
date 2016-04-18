@@ -57,6 +57,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Paste and Send" Command="{Binding PasteAndSendCommand}" InputGestureText="Ctrl+Shift+V" />
+                <MenuItem Header="Paste and Send Lines" Command="{Binding PasteAndSendLinesCommand}" InputGestureText="Ctrl+Alt+Shift+V" />
                 <Separator />
                 <MenuItem Header="Select All" Command="{Binding SelectAllCommand}" InputGestureText="Ctrl+A" >
                     <MenuItem.Icon>
@@ -101,6 +102,7 @@
                 <KeyBinding Key="C" Modifiers="Control" Command="{Binding CopyCommand}" />
                 <KeyBinding Key="V" Modifiers="Control" Command="{Binding PasteCommand}" />
                 <KeyBinding Key="V" Modifiers="Control+Shift" Command="{Binding PasteAndSendCommand}" />
+                <KeyBinding Key="V" Modifiers="Control+Alt+Shift" Command="{Binding PasteAndSendLinesCommand}" />
                 <KeyBinding Key="I" Modifiers="Control" Command="{Binding ClearCommand}" />
                 <KeyBinding Key="P" Modifiers="Control" Command="{Binding PrintCommand}" />
                 <KeyBinding Key="A" Modifiers="Control" Command="{Binding SelectAllCommand}" />
@@ -126,6 +128,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="Paste and Send" Command="{Binding PasteAndSendCommand}" InputGestureText="Ctrl+Shift+V" />
+                    <MenuItem Header="Paste and Send Lines" Command="{Binding PasteAndSendLinesCommand}" InputGestureText="Ctrl+Alt+Shift+V" />
                     <Separator />
                     <MenuItem Header="Select All" Command="{Binding SelectAllCommand}" InputGestureText="Ctrl+A" >
                         <MenuItem.Icon>

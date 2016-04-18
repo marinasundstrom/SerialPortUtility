@@ -33,7 +33,7 @@ namespace SerialPortUtility.Services.Stubs
         public Format OutputFormat { get; set; }
         public string NewLine { get; set; }
         public bool PrintInput { get; set; }
-        public int PushDelay { get; set; }
+        public int LinePushDelay { get; set; }
         public string FontFamily { get; set; }
         public int FontSize { get; set; }
 

@@ -35,7 +35,7 @@
                        Text="Copyright © Microsoft Corporation 2012" VerticalAlignment="Top" Margin="0,0,0,30" />
         </StackPanel>
         <Button x:Name="LinkTextBlock" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="0,15,0,0"
-                Grid.Row="3" VerticalAlignment="Top" Click="LinkTextBlock_Click">
+                Grid.Row="3" VerticalAlignment="Top" Click="LinkTextBlock_Click" Cursor="Hand">
             <Button.Template>
                 <ControlTemplate>
                     <TextBlock Text="Project page on GitHub" TextDecorations="Underline" Foreground="#FF5C71CF" />

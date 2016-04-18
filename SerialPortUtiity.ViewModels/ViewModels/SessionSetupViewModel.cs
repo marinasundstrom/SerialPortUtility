@@ -128,7 +128,7 @@ namespace SerialPortUtility.ViewModels
 
             PrintInputToScreen = SettingsService.PrintInput;
 
-            PushDelay = SettingsService.PushDelay;
+            PushDelay = SettingsService.LinePushDelay;
 
             NewLine = Regex.Escape(SettingsService.NewLine);
         }
@@ -380,7 +380,7 @@ namespace SerialPortUtility.ViewModels
         {
         }
 
-        private void StartCommandImpl()
+        private async void StartCommandImpl()
         {
             if (IsValid)
             {
@@ -406,7 +406,7 @@ namespace SerialPortUtility.ViewModels
             }
             else
             {
-                DialogService.ShowErrorDialogAsync("Invalid parameters.", "Error");
+                await DialogService.ShowErrorDialogAsync("Invalid parameters.", "Error");
             }
         }
 
@@ -424,7 +424,7 @@ namespace SerialPortUtility.ViewModels
             SettingsService.InputFormat = InputFormat;
             SettingsService.OutputFormat = OutputFormat;
             SettingsService.PrintInput = PrintInputToScreen;
-            SettingsService.PushDelay = PushDelay;
+            SettingsService.LinePushDelay = PushDelay;
             SettingsService.NewLine = Regex.Unescape(NewLine);
 
             SettingsService.Save();

@@ -6,6 +6,9 @@ using System.Windows.Input;
 using SerialPortUtility.Command;
 using SerialPortUtility.Services;
 using GalaSoft.MvvmLight.CommandWpf;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace SerialPortUtility.ViewModels
 {
@@ -49,6 +52,7 @@ namespace SerialPortUtility.ViewModels
             CopyCommand = new RelayCommand(CopyCommandImpl);
             PasteCommand = new AsyncRelayCommand(PasteCommandImpl);
             PasteAndSendCommand = new AsyncRelayCommand(PasteAndSendCommandImpl);
+            PasteAndSendLinesCommand = new AsyncRelayCommand(PasteAndSendLinesCommandImpl);
             CutCommand = new AsyncRelayCommand(CutCommandImpl);
             SelectAllCommand = new RelayCommand(SelectAllCommandImpl);
             QuitCommand = new RelayCommand(QuitCommandImpl);
@@ -120,6 +124,7 @@ namespace SerialPortUtility.ViewModels
         public ICommand CopyCommand { get; private set; }
         public ICommand PasteCommand { get; private set; }
         public ICommand PasteAndSendCommand { get; private set; }
+        public ICommand PasteAndSendLinesCommand { get; private set; }
         public ICommand CutCommand { get; private set; }
         public ICommand PrintCommand { get; private set; }
         public ICommand SelectAllCommand { get; private set; }
@@ -147,7 +152,33 @@ namespace SerialPortUtility.ViewModels
                 if (ConsoleService.IsEnabled)
                 {
                     string text = ClipboardService.GetText();
-                    var lines = text.Split(new[] { SettingsService.NewLine }, StringSplitOptions.None);
+
+                    int index = ConsoleService.SelectionStart;
+                    await ConsoleService.InsertText(index, text);
+                }
+            }
+            catch (ArgumentException e)
+            {
+                flag = true;
+                message = e.Message;
+            }
+            if (flag)
+            {
+                await DialogService.ShowErrorDialogAsync(message, "Exception");
+            }
+        }
+
+        private async Task PasteAndSendLinesCommandImpl()
+        {
+            bool flag = false;
+            string message = "";
+            try
+            {
+                if (ConsoleService.IsEnabled)
+                {
+                    string text = ClipboardService.GetText();
+
+                    var lines = Regex.Split(text, $"(?={SettingsService.NewLine})");
                     if (lines.Length > 1)
                     {
                         foreach (var line in lines)
@@ -159,20 +190,13 @@ namespace SerialPortUtility.ViewModels
                             }
 
                             int index = ConsoleService.SelectionStart;
-                            await ConsoleService.InsertText(index, line + SettingsService.NewLine);
+                            await ConsoleService.InsertText(index, line);
 
-                            ConsoleService.Send(
-                                false);
-
-                            if (SettingsService.PushDelay > 0)
+                            if (SettingsService.LinePushDelay > 0)
                             {
-                                await TaskHelpers.Delay(SettingsService.PushDelay);
+                                await TaskHelpers.Delay(SettingsService.LinePushDelay);
                             }
                         }
-                    }
-                    else
-                    {
-                        ConsoleService.Write(text);
                     }
                 }
             }

@@ -32,7 +32,7 @@
 
         bool PrintInput { get; set; }
 
-        int PushDelay { get; set; }
+        int LinePushDelay { get; set; }
         string FontFamily { get; set; }
         int FontSize { get; set; }
         void Save();
