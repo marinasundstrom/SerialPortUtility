@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortUtility.Console", "PortUtil.Console\SerialPortUtility.Console.csproj", "{E2D9FCEE-0416-4848-BC4C-3A45A84E669A}"
 EndProject
@@ -25,9 +25,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortUtility.Tests", "PortUtil.Tests\SerialPortUtility.Tests.csproj", "{8F898E50-C617-43AD-A582-FD405FE5CF88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{C7D05BE7-0B8A-4F74-B8EE-2BD410633417}"
-	ProjectSection(SolutionItems) = preProject
-		Images\Terminal.png = Images\Terminal.png
-	EndProjectSection
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SerialPortUtiity.ViewModels", "SerialPortUtiity.ViewModels\SerialPortUtiity.ViewModels.shproj", "{09E9F067-5BEB-45DC-9FCF-BFACF6E8766A}"
 EndProject
