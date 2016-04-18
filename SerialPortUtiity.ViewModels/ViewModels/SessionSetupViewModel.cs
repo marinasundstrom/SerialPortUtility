@@ -342,6 +342,7 @@ namespace SerialPortUtility.ViewModels
             }
         }
 
+        [NotEmpty]
         public string NewLine
         {
             get { return _newLine; }
