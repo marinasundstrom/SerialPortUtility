@@ -12,7 +12,7 @@ using GalaSoft.MvvmLight.CommandWpf;
 
 namespace SerialPortUtility.ViewModels
 {
-    public class Session : ObservableObject, ISession
+    public class Session : ObservableObject
     {
         private bool _isRunning;
         private Task _inputThreadTask;

@@ -7,7 +7,7 @@ using GalaSoft.MvvmLight.CommandWpf;
 
 namespace SerialPortUtility.ViewModels
 {
-    public class SettingsViewModel : ViewModelBase, ISettingsViewModel
+    public class SettingsViewModel : ViewModelBase
     {
         private string _backgroundColor;
         private IEnumerable<string> _colorList;

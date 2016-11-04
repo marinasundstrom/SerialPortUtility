@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 
 namespace SerialPortUtility.ViewModels
 {
-    public class SessionSetupViewModel : ViewModelBase, ISessionSetupViewModel
+    public class SessionSetupViewModel : ViewModelBase
     {
         private int _baudRate;
         private IEnumerable<int> _baudRateItems;

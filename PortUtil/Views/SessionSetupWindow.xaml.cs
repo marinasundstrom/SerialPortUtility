@@ -16,9 +16,9 @@ namespace SerialPortUtility.Views
             Loaded += SessionSetupWindow_Loaded;
         }
 
-        public ISessionSetupViewModel ViewModel
+        public SessionSetupViewModel ViewModel
         {
-            get { return (ISessionSetupViewModel) DataContext; }
+            get { return (SessionSetupViewModel) DataContext; }
         }
 
         private void SessionSetupWindow_Loaded(object sender, RoutedEventArgs e)

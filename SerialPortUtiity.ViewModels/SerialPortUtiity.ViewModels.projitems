@@ -15,11 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Validation\ExpectInt32Attribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validation\NotEmptyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ConsoleViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IConsoleViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ISession.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ISessionConfigViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ISettingsViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Session.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SessionSetupViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SettingsViewModel.cs" />

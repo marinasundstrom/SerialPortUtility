@@ -37,10 +37,10 @@ namespace SerialPortUtility.ViewModels
 
             // ViewModels
 
-            nuioc.Register<IConsoleViewModel, ConsoleViewModel>();
+            nuioc.Register<ConsoleViewModel, ConsoleViewModel>();
 
-            nuioc.Register<ISessionSetupViewModel, SessionSetupViewModel>();
-            nuioc.Register<ISettingsViewModel, SettingsViewModel>();
+            nuioc.Register<SessionSetupViewModel, SessionSetupViewModel>();
+            nuioc.Register<SettingsViewModel, SettingsViewModel>();
         }
 
         public ISerialPortService SerialPortService
@@ -58,19 +58,19 @@ namespace SerialPortUtility.ViewModels
             get { return ServiceLocator.Current.GetInstance<ISettingsService>(); }
         }
 
-        public IConsoleViewModel ConsoleViewModel
+        public ConsoleViewModel ConsoleViewModel
         {
-            get { return ServiceLocator.Current.GetInstance<IConsoleViewModel>(); }
+            get { return ServiceLocator.Current.GetInstance<ConsoleViewModel>(); }
         }
 
-        public ISessionSetupViewModel SessionSetupViewModel
+        public SessionSetupViewModel SessionSetupViewModel
         {
-            get { return ServiceLocator.Current.GetInstance<ISessionSetupViewModel>(); }
+            get { return ServiceLocator.Current.GetInstance<SessionSetupViewModel>(); }
         }
 
-        public ISettingsViewModel SettingsViewModel
+        public SettingsViewModel SettingsViewModel
         {
-            get { return ServiceLocator.Current.GetInstance<ISettingsViewModel>(); }
+            get { return ServiceLocator.Current.GetInstance<SettingsViewModel>(); }
         }
     }
 }

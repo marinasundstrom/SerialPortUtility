@@ -11,7 +11,7 @@ namespace SerialPortUtility.ViewModels.Tests
         [TestMethod]
         public void MakeDefaultCommand()
         {
-            ISessionSetupViewModel sessionSetupViewModel = new SessionSetupViewModel(
+            SessionSetupViewModel sessionSetupViewModel = new SessionSetupViewModel(
                 new StubConsoleService(),
                 new StubSettingsService(),
                 new StubSerialPortService(),
@@ -28,7 +28,7 @@ namespace SerialPortUtility.ViewModels.Tests
         {
             var dialogService = new StubDialogService();
 
-            ISessionSetupViewModel sessionSetupViewModel = new SessionSetupViewModel(
+            SessionSetupViewModel sessionSetupViewModel = new SessionSetupViewModel(
                 new StubConsoleService(),
                 new StubSettingsService(),
                 new StubSerialPortService(),
@@ -46,7 +46,7 @@ namespace SerialPortUtility.ViewModels.Tests
         [TestMethod]
         public void CancelCommand()
         {
-            ISessionSetupViewModel sessionSetupViewModel = new SessionSetupViewModel(
+            SessionSetupViewModel sessionSetupViewModel = new SessionSetupViewModel(
                 new StubConsoleService(),
                 new StubSettingsService(),
                 new StubSerialPortService(),

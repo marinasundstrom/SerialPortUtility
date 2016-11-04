@@ -12,7 +12,7 @@ namespace SerialPortUtility.ViewModels.Tests
         [TestMethod]
         public async Task NewSession()
         {
-            IConsoleViewModel consoleViewModel = new ConsoleViewModel(
+            ConsoleViewModel consoleViewModel = new ConsoleViewModel(
                 new StubConsoleService(),
                 new StubSerialPortService(), 
                 new StubSettingsService(), 
@@ -45,7 +45,7 @@ namespace SerialPortUtility.ViewModels.Tests
         [ExpectedException(typeof(InvalidOperationException))]
         public async Task NewSessionAndCancel()
         {
-            IConsoleViewModel consoleViewModel = new ConsoleViewModel(
+            ConsoleViewModel consoleViewModel = new ConsoleViewModel(
                 new StubConsoleService(),
                 new StubSerialPortService(),
                 new StubSettingsService(),

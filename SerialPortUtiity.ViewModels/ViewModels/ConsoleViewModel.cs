@@ -12,10 +12,10 @@ using System.Text.RegularExpressions;
 
 namespace SerialPortUtility.ViewModels
 {
-    public sealed class ConsoleViewModel : ViewModelBase, IConsoleViewModel
+    public sealed class ConsoleViewModel : ViewModelBase
     {
         private bool _isSessionOpen;
-        private ISession _session;
+        private Session _session;
         private string _title;
 
         public ConsoleViewModel(
@@ -107,7 +107,7 @@ namespace SerialPortUtility.ViewModels
             }
         }
 
-        public ISession Session
+        public Session Session
         {
             get { return _session; }
             private set

@@ -13,7 +13,7 @@ namespace SerialPortUtility.ViewModels
     /// Based on code from http://blog.micic.ch/net/easy-mvvm-example-with-inotifypropertychanged-and-inotifydataerrorinfo
     /// with small modifications: Added CallerMemberNameAttribute. Changed access modifiers.
     /// </summary>
-    public abstract class ViewModelBase : GalaSoft.MvvmLight.ViewModelBase, IViewModel
+    public abstract class ViewModelBase : GalaSoft.MvvmLight.ViewModelBase
     {
         #region Notify data error
 

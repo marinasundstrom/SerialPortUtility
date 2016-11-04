@@ -15,9 +15,9 @@ namespace SerialPortUtility.Views
             Loaded += SessionSetupWindow_Loaded;
         }
 
-        public ISettingsViewModel ViewModel
+        public SettingsViewModel ViewModel
         {
-            get { return (ISettingsViewModel) DataContext; }
+            get { return (SettingsViewModel) DataContext; }
         }
 
         private void SessionSetupWindow_Loaded(object sender, RoutedEventArgs e)
